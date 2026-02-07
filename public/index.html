@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="wrap topbar-inner">
+            <div class="brand">
+                <div class="logo">☕</div>
+                    <div>
+                        <div class="brand-title">Linos Coffee Shop</div>
+                        <div class="brand-sub">Simple orders & menu</div>
+                    </div>
+            </div>
+
+            <div class="token-box">
+                <span class="dot" id="authDot"></span>
+                <span id="authText">Guest</span>
+                <button class="btn btn-ghost" onclick="toggleAuth()">Login / Register</button>
+                <button class="btn btn-ghost" onclick="toggleAccount()">Account</button>
+                <button class="btn btn-ghost" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="authPanel" class="auth-panel">
+        <div class="wrap auth-content">
+            <section class="card auth-card">
+            <div class="card-title">Register</div>
+            <label>Username</label>
+            <input id="r_username" />
+            <label>Email</label>
+            <input id="r_email" />
+            <label>Password</label>
+            <input id="r_password" type="password" />
+            <button class="btn btn-primary full" onclick="register()">Create account</button>
+            </section>
+
+            <section class="card auth-card">
+            <div class="card-title">Login</div>
+            <label>Email</label>
+            <input id="l_email" />
+            <label>Password</label>
+            <input id="l_password" type="password" />
+            <button class="btn btn-secondary full" onclick="login()">Login</button>
+            </section>
+        </div>
+    </div>
+
+    <main class="wrap">
+        <section class="hero">
+        <h1>Fresh coffee, fast orders.</h1>
+        <p>Register, login, browse the menu, and create an orders.</p>
+        <div class="hero-actions">
+        </div>
+        </section>
+
+    <section id="accountPanel" class="card card-wide" style="display:none;">
+        <div class="card-head">
+            <div>
+                <div class="card-title">My Account</div>
+                <div class="hint">Profile and order management</div>
+            </div>
+            <button class="btn btn-ghost" onclick="toggleAccount()">Close</button>
+        </div>
+
+        <div class="account-grid">
+            <div class="subcard">
+                <div class="sub-title">Profile</div>
+                <div id="profileBox" class="hint">Load profile to see details.</div>
+
+                <button class="btn btn-secondary" onclick="loadProfile()">Load Profile</button>
+
+                <div style="margin-top:12px;">
+                    <div class="sub-title" style="margin-bottom:6px;">Update Profile</div>
+
+                    <label>New username</label>
+                    <input id="u_username" placeholder="leave empty if no change" />
+
+                    <label>New password</label>
+                    <input id="u_password" type="password" placeholder="min 6 chars (optional)" />
+
+                    <button class="btn btn-primary full" onclick="updateProfile()">Save changes</button>
+                </div>
+            </div>
+
+            <div class="subcard">
+                <div class="sub-title">Manage My Orders</div>
+                <div class="hint">View / update status / delete</div>
+
+                <button class="btn btn-secondary" onclick="loadOrdersManage()">Load My Orders</button>
+
+                <div id="ordersManage" class="orders" style="margin-top:12px;"></div>
+            </div>
+        </div>
+    </section>
+
+        <section class="card card-wide">
+            <div class="card-head">
+                <div>
+                    <div class="card-title">Menu</div>
+                    <div class="hint">Click an item to prefill order form.</div>
+                </div>
+
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <button class="btn btn-ghost" onclick="loadMenu()">Refresh</button>
+                    <button class="btn btn-secondary" id="menuToggleBtn" onclick="toggleMenu()">Hide</button>
+                </div>
+            </div>
+
+            <div id="menuPanel" class="fold open">
+                <div id="menu" class="menu-grid"></div>
+            </div>
+    </section>
+
+        <section class="card">
+            <div class="card-title">Create Order</div>
+            <div class="form">
+                <label>Product ID</label>
+                <input id="o_productId" placeholder="click menu item to fill" />
+                <label>Quantity</label>
+                <input id="o_qty" type="number" value="1" min="1" />
+                <button class="btn btn-primary full" onclick="createOrder()">Place order</button>
+                <div class="hint">Requires login</div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div>Coffee Shop • Final Project</div>
+        </footer>
+    </main>
+
+    <script src="java.js"></script>
+</body>
+</html>
